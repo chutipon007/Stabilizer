@@ -74,6 +74,24 @@ app.post("/customers/register", async (req, resp) => {
     }
 });
 
+app.get("customers/login", async (req, resp) => {
+  console.log(req.query);
+  const id = req.query.id;
+  const topic = "customers/" + String(id);
+  const statusRef = ref(database, topic);
+  try {
+    const snapshot = await get(statusRef);
+    if (snapshot.exists()) {
+      resp.json({ message: "Login Successfully" }); // Send the retrieved data
+    } else {
+      resp.status(404).json({ message: "No data available" });
+    }
+  } catch (error) {
+    console.error(`Error fetching data: ${error}`);
+    resp.status(500).json({ message: "Error fetching data" });
+  }
+});
+
 app.get("/stabilizer/index", async (req, resp) => {
   console.log(req.query);
   const id = req.query.id;
