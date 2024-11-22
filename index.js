@@ -74,7 +74,7 @@ app.post("/customers/register", async (req, resp) => {
     }
 });
 
-app.get("customers/login", async (req, resp) => {
+app.get("/customers/login", async (req, resp) => {
   console.log(req.query);
   const id = req.query.id;
   const topic = "customers/" + String(id);
