@@ -3,6 +3,8 @@ const { getDatabase } = require("firebase/database");
 const { getAuth, signInWithEmailAndPassword, onAuthStateChanged, reauthenticateWithCredential } = require("firebase/auth");
 require("dotenv").config();
 
+console.log("API Key:", process.env.apiKey); // Add this to check
+
 const list = [
     process.env.email_1, process.env.email_2, process.env.email_3, process.env.email_4, process.env.email_5, process.env.email_6, process.env.email_7
 ]
